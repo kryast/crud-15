@@ -16,6 +16,7 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	h := handlers.NewBookHandler(svc)
 
 	r.POST("/book", h.Create)
+	r.GET("/book", h.GetAll)
 
 	return r
 }

@@ -7,3 +7,7 @@ curl -X POST http://localhost:8080/book \
   "title": "Belajar Golang Dasar",
   "author": "Ahmad Syarifuddin"
 }'
+
+
+GET
+curl http://localhost:8080/book

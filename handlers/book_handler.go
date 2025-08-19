@@ -30,3 +30,13 @@ func (bh *BookHandler) Create(c *gin.Context) {
 
 	c.JSON(http.StatusOK, book)
 }
+
+func (bh *BookHandler) GetAll(c *gin.Context) {
+	books, err := bh.service.GetAll()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"Error": err})
+		return
+	}
+
+	c.JSON(http.StatusOK, books)
+}
