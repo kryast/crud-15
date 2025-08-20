@@ -8,6 +8,7 @@ import (
 type BookRepository interface {
 	Create(book *models.Book) error
 	GetAll() ([]models.Book, error)
+	GetByID(id uint) (*models.Book, error)
 }
 
 type bookRepository struct {
@@ -27,4 +28,11 @@ func (br *bookRepository) GetAll() ([]models.Book, error) {
 	err := br.db.Find(&books).Error
 
 	return books, err
+}
+
+func (br *bookRepository) GetByID(id uint) (*models.Book, error) {
+	var book models.Book
+	err := br.db.First(&book).Error
+
+	return &book, err
 }

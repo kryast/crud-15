@@ -11,3 +11,4 @@ curl -X POST http://localhost:8080/book \
 
 GET
 curl http://localhost:8080/book
+curl http://localhost:8080/book/1
