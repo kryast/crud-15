@@ -9,6 +9,7 @@ type BookRepository interface {
 	Create(book *models.Book) error
 	GetAll() ([]models.Book, error)
 	GetByID(id uint) (*models.Book, error)
+	Update(book *models.Book) error
 }
 
 type bookRepository struct {
@@ -35,4 +36,8 @@ func (br *bookRepository) GetByID(id uint) (*models.Book, error) {
 	err := br.db.First(&book).Error
 
 	return &book, err
+}
+
+func (br *bookRepository) Update(book *models.Book) error {
+	return br.db.Save(book).Error
 }

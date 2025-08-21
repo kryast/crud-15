@@ -53,3 +53,21 @@ func (bh *BookHandler) GetByID(c *gin.Context) {
 
 	c.JSON(http.StatusOK, book)
 }
+
+func (bh *BookHandler) Update(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+
+	var book models.Book
+	if err := c.ShouldBindJSON(&book); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"Error": err})
+		return
+	}
+
+	book.ID = uint(id)
+	if err := bh.service.Update(&book); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"Error": err})
+		return
+	}
+
+	c.JSON(http.StatusOK, book)
+}
