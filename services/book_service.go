@@ -10,6 +10,7 @@ type BookService interface {
 	GetAll() ([]models.Book, error)
 	GetByID(id uint) (*models.Book, error)
 	Update(book *models.Book) error
+	Delete(id uint) error
 }
 
 type bookService struct {
@@ -34,4 +35,8 @@ func (bs *bookService) GetByID(id uint) (*models.Book, error) {
 
 func (bs *bookService) Update(book *models.Book) error {
 	return bs.repo.Update(book)
+}
+
+func (bs *bookService) Delete(id uint) error {
+	return bs.repo.Delete(id)
 }

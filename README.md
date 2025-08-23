@@ -20,3 +20,5 @@ curl -X PUT http://localhost:8080/book/1 \
   "title": "Belajar Golang Dasar Updated",
   "author": "Ahmad Syarifuddin Updated"
 }'
+
+DELETE curl -X DELETE http://localhost:8080/book/1
